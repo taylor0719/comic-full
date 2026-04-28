@@ -167,6 +167,24 @@
       align-content: start;
       gap: .7rem;
     }
+    .mini-game { position: relative; }
+    .game-overlay {
+      position: absolute;
+      inset: .85rem;
+      z-index: 30;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(4px);
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      text-align: center;
+    }
+    .game-overlay.is-hidden { display: none; }
+    .game-overlay-content { display: grid; gap: .65rem; justify-items: center; }
+    .game-overlay-title { margin: 0; font-size: 1.6rem; }
+    .game-overlay p { margin: 0; font-size: .95rem; }
+    .game-overlay .btn { font-size: 1.35rem; padding: .45rem 1.2rem; }
 
     .food-strip {
       font-size: 1.6rem;
@@ -322,7 +340,7 @@
         <div class="speech">「不管人在哪裡，只要你還記得你們家這道菜，就很足夠了！」這是漫畫《手路菜》中，阿旺師對廚師江青雄說的話。在故事開頭，海外求學歸來的江青雄找上以「手路菜扛霸子」聞名的阿旺師拜師學藝，並請他代客料理「瓜仔肉」。在料理過程中兩人一邊閒聊，也逐漸揭露青雄的回憶，原來這道菜於他而言，不僅是媽媽在失智前經常煮的拿手菜，更乘載著兩人過往的衝突與情感。熱氣自蒸鍋中緩緩升起，開蓋瞬間濃郁的肉香便撲鼻而來。當青雄終於將瓜仔肉送入口中，隨之浮現的正是記憶中熟悉的味道，看似平凡的菜餚，背後卻隱藏著媽媽未曾說出口的牽掛。</div>
         <p class="caption">《手路菜》劇情融入不少臺灣在地的家常菜，如雞卷、炒米粉等，其故事皆改編自民眾真實的家庭記憶。　圖／鄭丞傑攝</p>
       </article>
-      <aside class="side">
+      <aside class="side mini-game" data-game-id="cook">
         <div class="food-strip">🍲 🥢 🧄 🧅 🍵</div>
         <div class="mini-guide">操作說明：連續點擊漫畫廚師，累積 5 次會炒出瓜仔肉，並可重新開始。</div>
         <div class="chef-box">
@@ -330,7 +348,7 @@
           <div class="pot" id="pot">🍳</div>
           <p>點擊次數：<span id="cookCount">0</span>/5</p>
           <p class="result" id="cookMsg"></p>
-          <button class="btn" id="resetCook">重新開始</button>
+          <button class="btn" id="resetCook" data-action="restart">重新開始</button>
         </div>
       </aside>
     </section>
@@ -342,11 +360,12 @@
         <p>Openbook閱讀誌的一篇漫畫評論〈美食漫畫的台灣，與台灣的美食漫畫〉觀察到，早在1990年代，由沙朗原作、黃璁毅所繪的《我是大廚師》裡，便詳細呈現了臺灣料理的烹調過程與辦桌文化。現今作品中，《幸福調味料》藉由柑仔店的茶葉蛋、手工醬油等日常食材，揭開人物間的溫馨互動；《台灣特有種》則將新竹貢丸及米粉等在地名產擬人化，創作出獨特的世界觀與日常故事；以台南考古出土文物為主題的《鯨舟堂休業中》，甜點創作也融入於故事裡，在味覺饗宴中探索台南的歷史底蘊。近年多部以臺灣歷史為背景的作品，如《異人茶跡》、《Mararum：山間料理人》及《友繪的小梅屋記事簿》等，也細緻還原了不同時代下的飲食特色。</p>
         <p class="caption">臺漫發展數十年來，有各式關於食物的漫畫，如特色點心介紹、旅遊食記、地方酒文化等不同類別。　圖／陳筱雯攝</p>
       </article>
-      <aside class="side">
+      <aside class="side mini-game" data-game-id="cards">
         <div class="food-strip">🍖 🍧 🥚 🍵 🍡 🍰</div>
         <div class="mini-guide">操作說明：點選食物卡片查看其文化意義，選中的卡片會高亮。</div>
         <div class="cards" id="foodCards"></div>
         <div class="speech" id="foodDesc">請先點選一種食材／料理卡片。</div>
+        <button class="btn" id="resetCards" data-action="restart">重新開始</button>
       </aside>
     </section>
 
@@ -360,7 +379,7 @@
         <p>田調成為許多創作者的基本功課，然而面對海量的資料，常常需要作出取捨以符合故事主軸，「我們收集了近乎百分之百的資料，但用到的可能只有不到百分之五。」張季雅表示雖然有許多內容沒有出現在作品裡，但這也成為了創作者的養分。以美食類型的漫畫而言，將料理食譜與歷史故事補充在休息頁或附錄裡，甚至是畫成小彩蛋藏在漫畫一隅，都是呈現這些田調心血的方式。</p>
         <p class="caption">「花了那麼多心力找到的資料，不放進去感覺很可惜。」漫畫家清水分享畫出台北北門鐵道的由來；右圖則是休息頁上的料理介紹。　圖／鄭丞傑攝</p>
       </article>
-      <aside class="side">
+      <aside class="side mini-game" data-game-id="research">
         <div class="food-strip">📓 🔍 🗺️ 🎙️</div>
         <div class="mini-guide">操作說明：依序點擊四步驟，完成後進度條會滿格。</div>
         <div class="progress"><div class="bar" id="researchBar"></div></div>
@@ -371,6 +390,7 @@
           <button class="step" data-step="4">4. 取捨資料並轉化成漫畫</button>
         </div>
         <p class="result" id="researchMsg"></p>
+        <button class="btn" id="resetResearch" data-action="restart">重新開始</button>
       </aside>
     </section>
 
@@ -385,7 +405,7 @@
         <p>因此自2012年起，文化部便在法國安古蘭國際漫畫節設置臺灣館，臺漫陸續也在義大利盧卡國際漫畫節、德國萊比錫國際動漫展等全球性展場亮相。2013年開始推動的「Books From Taiwan」計畫，也累積了數十本臺漫試譯版在海外書展宣傳，並與多國出版社積極接洽，盼臺漫能打入國際市場。</p>
         <p class="caption">阮光民於2018年參與法國安古蘭國際漫畫節，當年臺灣館主題為漫畫市集，讓各國讀者感受臺灣的多樣面貌。　圖／阮光民提供</p>
       </article>
-      <aside class="side">
+      <aside class="side mini-game" data-game-id="world">
         <div class="food-strip">🧋 ✈️ 📚 🌍</div>
         <div class="mini-guide">滑入動畫：臺漫在不同國際展會登場。</div>
         <div class="world" id="worldMap">
@@ -394,6 +414,7 @@
           <div class="pin">📍 德國萊比錫</div>
           <div class="pin">📍 日本</div>
         </div>
+        <button class="btn" id="resetWorld" data-action="restart">重新開始</button>
       </aside>
     </section>
 
@@ -408,7 +429,7 @@
         <p class="caption">《沒有明天的我們》其中一幕，在日本編輯建議後，把原本平鋪直敘的詢問姓名環節加上人物間靠近、壁咚的分鏡，增強劇情張力。　圖／截自CCC追漫台</p>
         <p>相較日本、韓國成熟的產業結構，臺漫正處於萌芽階段。陳怡靜分享一位義大利讀者的回饋，他形容臺漫就像萬花筒般，小小的視野看進去，卻充滿多元繽紛的漫畫題材。羅禾淋對此表示認同，認為各國漫畫產業本就因文化與產業結構不同而有所差異，臺灣不必以此作為單一比較標準。目前在政府及民間的協作下，臺漫逐步強化創作與市場間的連結，無論是補助機制、國際推廣或異界合作，都象徵著臺漫極大的成長與發展潛能。</p>
       </article>
-      <aside class="side">
+      <aside class="side mini-game" data-game-id="draw">
         <div class="food-strip">🍖 🍧 🧋 🍰</div>
         <div class="mini-guide">操作說明：選擇想畫的食物，在畫布塗鴉，按「完成評分」取得 60~100 分。</div>
         <select id="drawTarget" class="btn">
@@ -423,6 +444,7 @@
           <button class="btn" id="scoreCanvas">完成評分</button>
         </div>
         <p class="result" id="drawResult"></p>
+        <button class="btn" id="resetDraw" data-action="restart">重新開始</button>
       </aside>
     </section>
 
@@ -434,13 +456,14 @@
         <p>臺漫歷史起起伏伏，經歷戒嚴、文字審查的階段後，才形成現今所見的臺漫，開始能夠表達漫畫家自身想法，融入在地議題，而在政府補助的支持下也讓臺漫產業能更加完善。玄奘大學藝術與創意設計學系副教授胡覺隆長期投入臺漫產業，見證轉變的他提醒，臺漫不應全然以利益為導向，而應被視為文化的重要一環。阮光民則認為美食是穿越時空的鑰匙，「我們其實有一雙味蕾，一個在舌尖，另一個在心裡。」在看美食漫畫時，被牽動的不只是食物滋味的記憶，更多的是與那道菜餚緊緊相連的珍貴回憶。</p>
         <p>創作者們認為，臺漫不一定非得要擠身主流市場，只要能持續存在著，本身就深具價值。　圖／鄭丞傑攝</p>
       </article>
-      <aside class="side">
+      <aside class="side mini-game" data-game-id="scratch">
         <div class="food-strip">🍲 🍖 🍧 🧋 🥚 🍰 🍡</div>
         <div class="mini-guide">操作說明：在灰色刮刮卡上拖曳摩擦，刮開一定比例後會顯示結語。</div>
         <div class="scratch-wrap">
           <div class="scratch-reveal" id="scratchReveal">🍲 🍖 🍧 🧋 🥚 🍰 🍡<br>臺漫的味道，不只在紙上，也藏在每個人的記憶裡。</div>
           <canvas id="scratchCanvas" width="360" height="220"></canvas>
         </div>
+        <button class="btn" id="resetScratch" data-action="restart">重新開始</button>
       </aside>
     </section>
   </main>
@@ -452,6 +475,69 @@
     }, { threshold: .12 });
     document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
 
+    const gameStates = new Map();
+    const startHandlers = new Map();
+    const resetHandlers = new Map();
+    const miniGameContainers = document.querySelectorAll('.mini-game');
+
+    function isGameStarted(gameId) {
+      return gameStates.get(gameId)?.started === true;
+    }
+    function lockGame(gameId) {
+      const state = gameStates.get(gameId);
+      if (!state) return;
+      state.started = false;
+      state.overlay.classList.remove('is-hidden');
+      state.container.classList.add('game-locked');
+    }
+    function unlockGame(gameId) {
+      const state = gameStates.get(gameId);
+      if (!state) return;
+      state.started = true;
+      state.overlay.classList.add('is-hidden');
+      state.container.classList.remove('game-locked');
+    }
+    function startGame(gameId) {
+      const startHandler = startHandlers.get(gameId);
+      if (startHandler) startHandler();
+      unlockGame(gameId);
+    }
+    function resetGame(gameId) {
+      const resetHandler = resetHandlers.get(gameId);
+      if (resetHandler) resetHandler();
+      lockGame(gameId);
+    }
+
+    miniGameContainers.forEach((container, index) => {
+      if (!container.dataset.gameId) container.dataset.gameId = `game-${index + 1}`;
+      const gameId = container.dataset.gameId;
+      const guide = container.querySelector('.mini-guide')?.textContent.trim() ?? '點擊開始按鈕開始遊戲。';
+      const overlay = document.createElement('div');
+      overlay.className = 'game-overlay';
+      overlay.innerHTML = `
+        <div class="game-overlay-content">
+          <p class="game-overlay-title">🎮</p>
+          <p>${guide}</p>
+          <button class="btn" type="button">開始遊戲</button>
+        </div>
+      `;
+      overlay.querySelector('button').addEventListener('click', () => startGame(gameId));
+      container.appendChild(overlay);
+      gameStates.set(gameId, { started: false, container, overlay });
+      container.addEventListener('click', (e) => {
+        if (!isGameStarted(gameId) && !e.target.closest('.game-overlay')) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      }, true);
+      container.querySelectorAll('[data-action="restart"]').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          resetGame(gameId);
+        });
+      });
+    });
+
     // Chef clicking game
     const chef = document.getElementById('chef');
     const pot = document.getElementById('pot');
@@ -459,15 +545,17 @@
     const cookMsg = document.getElementById('cookMsg');
     let cook = 0;
     chef.addEventListener('click', () => {
+      if (!isGameStarted('cook')) return;
       if (cook >= 5) return;
       cook += 1;
       cookCount.textContent = cook;
       pot.textContent = ['🍳💨', '🍳💨💨', '🍳🔥', '🍳🔥💨', '🍳➡️🍲'][cook - 1];
       if (cook === 5) cookMsg.textContent = '記憶的味道完成了！';
     });
-    document.getElementById('resetCook').addEventListener('click', () => {
+    resetHandlers.set('cook', () => {
       cook = 0; cookCount.textContent = 0; pot.textContent = '🍳'; cookMsg.textContent = '';
     });
+    startHandlers.set('cook', () => {});
 
     // Ingredient cards
     const foodData = [
@@ -485,12 +573,18 @@
       card.className = 'food-card';
       card.textContent = name;
       card.addEventListener('click', () => {
-        document.querySelectorAll('.food-card').forEach(c => c.classList.remove('active'));
+        if (!isGameStarted('cards')) return;
+        foodCards.querySelectorAll('.food-card').forEach(c => c.classList.remove('active'));
         card.classList.add('active');
         foodDesc.textContent = `${name}：${desc}`;
       });
       foodCards.appendChild(card);
     });
+    resetHandlers.set('cards', () => {
+      foodCards.querySelectorAll('.food-card').forEach(c => c.classList.remove('active'));
+      foodDesc.textContent = '請先點選一種食材／料理卡片。';
+    });
+    startHandlers.set('cards', () => {});
 
     // Research step game
     let expectedStep = 1;
@@ -499,6 +593,7 @@
     const researchMsg = document.getElementById('researchMsg');
     steps.forEach(step => {
       step.addEventListener('click', () => {
+        if (!isGameStarted('research')) return;
         const n = Number(step.dataset.step);
         if (n === expectedStep) {
           step.classList.add('done');
@@ -508,19 +603,27 @@
         }
       });
     });
+    resetHandlers.set('research', () => {
+      expectedStep = 1;
+      steps.forEach(step => step.classList.remove('done'));
+      bar.style.width = '0%';
+      researchMsg.textContent = '';
+    });
+    startHandlers.set('research', () => {});
 
-    // World pins animation on view
+    // World pins animation
     const world = document.getElementById('worldMap');
-    const pinObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          [...world.querySelectorAll('.pin')].forEach((pin, i) => {
-            setTimeout(() => pin.classList.add('show'), i * 220);
-          });
-        }
+    const worldPins = [...world.querySelectorAll('.pin')];
+    function playWorldAnimation() {
+      worldPins.forEach(pin => pin.classList.remove('show'));
+      worldPins.forEach((pin, i) => {
+        setTimeout(() => {
+          if (isGameStarted('world')) pin.classList.add('show');
+        }, i * 220);
       });
-    }, { threshold: .4 });
-    pinObserver.observe(world);
+    }
+    startHandlers.set('world', playWorldAnimation);
+    resetHandlers.set('world', () => worldPins.forEach(pin => pin.classList.remove('show')));
 
     // Drawing canvas
     const drawCanvas = document.getElementById('drawCanvas');
@@ -532,7 +635,10 @@
       const t = e.touches ? e.touches[0] : e;
       return { x: (t.clientX - r.left) * (drawCanvas.width / r.width), y: (t.clientY - r.top) * (drawCanvas.height / r.height) };
     };
-    const start = (e) => { drawing = true; painted = true; const p = point(e); dctx.beginPath(); dctx.moveTo(p.x, p.y); e.preventDefault(); };
+    const start = (e) => {
+      if (!isGameStarted('draw')) return;
+      drawing = true; painted = true; const p = point(e); dctx.beginPath(); dctx.moveTo(p.x, p.y); e.preventDefault();
+    };
     const move = (e) => { if (!drawing) return; const p = point(e); dctx.lineTo(p.x, p.y); dctx.stroke(); e.preventDefault(); };
     const end = () => { drawing = false; };
     drawCanvas.addEventListener('mousedown', start); drawCanvas.addEventListener('mousemove', move);
@@ -541,12 +647,17 @@
     drawCanvas.addEventListener('touchmove', move, { passive: false });
     drawCanvas.addEventListener('touchend', end);
 
-    document.getElementById('clearCanvas').addEventListener('click', () => {
+    function clearDrawBoard() {
       dctx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
       painted = false;
       document.getElementById('drawResult').textContent = '';
+    }
+    document.getElementById('clearCanvas').addEventListener('click', () => {
+      if (!isGameStarted('draw')) return;
+      clearDrawBoard();
     });
     document.getElementById('scoreCanvas').addEventListener('click', () => {
+      if (!isGameStarted('draw')) return;
       const score = painted ? Math.floor(Math.random() * 41) + 60 : 60;
       let review = '很有實驗精神！';
       if (score > 75 && score <= 90) review = '食物看起來很有漫畫感！';
@@ -554,16 +665,23 @@
       const target = document.getElementById('drawTarget').value;
       document.getElementById('drawResult').textContent = `你畫的「${target}」獲得 ${score} 分：${review}`;
     });
+    startHandlers.set('draw', () => {});
+    resetHandlers.set('draw', () => clearDrawBoard());
 
     // Scratch card
     const scratch = document.getElementById('scratchCanvas');
     const sctx = scratch.getContext('2d');
-    sctx.fillStyle = '#9e9e9e';
-    sctx.fillRect(0, 0, scratch.width, scratch.height);
-    sctx.fillStyle = '#f1f1f1';
-    sctx.font = 'bold 28px sans-serif';
-    sctx.fillText('刮開看看臺漫的味道', 28, 120);
-    sctx.globalCompositeOperation = 'destination-out';
+    function resetScratchLayer() {
+      scratch.style.display = 'block';
+      sctx.globalCompositeOperation = 'source-over';
+      sctx.fillStyle = '#9e9e9e';
+      sctx.fillRect(0, 0, scratch.width, scratch.height);
+      sctx.fillStyle = '#f1f1f1';
+      sctx.font = 'bold 28px sans-serif';
+      sctx.fillText('刮開看看臺漫的味道', 28, 120);
+      sctx.globalCompositeOperation = 'destination-out';
+    }
+    resetScratchLayer();
     let scratching = false;
     const sp = (e) => {
       const r = scratch.getBoundingClientRect();
@@ -571,6 +689,7 @@
       return { x: (t.clientX - r.left) * (scratch.width / r.width), y: (t.clientY - r.top) * (scratch.height / r.height) };
     };
     const scratchMove = (e) => {
+      if (!isGameStarted('scratch')) return;
       if (!scratching) return;
       const p = sp(e);
       sctx.beginPath();
@@ -596,6 +715,10 @@
         scratch.style.display = 'none';
       }
     }
+    startHandlers.set('scratch', () => {});
+    resetHandlers.set('scratch', () => resetScratchLayer());
+
+    miniGameContainers.forEach(container => resetGame(container.dataset.gameId));
   </script>
 </body>
 </html>
